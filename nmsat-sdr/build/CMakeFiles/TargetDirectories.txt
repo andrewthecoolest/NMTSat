@@ -1,5 +1,0 @@
-/bench/build/CMakeFiles/nmsat_core.dir
-/bench/build/CMakeFiles/nmsat_test.dir
-/bench/build/CMakeFiles/nmsat_peek.dir
-/bench/build/CMakeFiles/edit_cache.dir
-/bench/build/CMakeFiles/rebuild_cache.dir

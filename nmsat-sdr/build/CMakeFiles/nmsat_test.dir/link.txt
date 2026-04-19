@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/nmsat_test.dir/tests/main.c.o -o nmsat_test  -Wl,-rpath,/usr/local/lib libnmsat_core.a /usr/local/lib/librtlsdr.so /usr/local/lib/libbladeRF.so -lm 

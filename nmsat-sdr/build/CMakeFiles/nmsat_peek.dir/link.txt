@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/nmsat_peek.dir/tests/peek_signal.c.o -o nmsat_peek  -Wl,-rpath,/usr/local/lib libnmsat_core.a /usr/local/lib/librtlsdr.so /usr/local/lib/libbladeRF.so -lm 
