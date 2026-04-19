@@ -212,8 +212,8 @@ int main()
 
     SDR sdr0, sdr1;
 
-    if (sdr_open(&sdr0, 0, 914800000, 2048000, "sdr0.bin") < 0) return 1;
-    if (sdr_open(&sdr1, 1, 914800000, 2048000, "sdr1.bin") < 0) {
+    if (sdr_open(&sdr0, 0, 914800000, 2048000, 200, "sdr0.bin") < 0) return 1;
+    if (sdr_open(&sdr1, 1, 914800000, 2048000, 200, "sdr1.bin") < 0) {
         sdr_close(&sdr0);
         return 1;
     }
