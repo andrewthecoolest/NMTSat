@@ -1,0 +1,2 @@
+/usr/bin/ar qc libnmsat_core.a CMakeFiles/nmsat_core.dir/src/sdr.c.o CMakeFiles/nmsat_core.dir/src/blade.c.o CMakeFiles/nmsat_core.dir/src/process.c.o
+/usr/bin/ranlib libnmsat_core.a
