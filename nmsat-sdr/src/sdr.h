@@ -39,9 +39,10 @@ int sdr_count(void);
 
 /* Open a device by index and populate an SDR struct.
  * Allocates the 50 MB buffer and opens output file.
+ * gain: tuner gain in tenths of dB (e.g. 200 = 20.0 dB), or 0 for AGC.
  * Returns 0 on success, -1 on failure. */
 int sdr_open(SDR *sdr, int index, uint32_t center_freq, uint32_t sample_rate,
-             const char *output_filename);
+             int gain, const char *output_filename);
 
 /* Close device, flush remaining buffer to file, free resources. */
 void sdr_close(SDR *sdr);

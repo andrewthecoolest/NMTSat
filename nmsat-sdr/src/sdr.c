@@ -13,7 +13,7 @@ int sdr_count(void) {
 }
 
 int sdr_open(SDR *sdr, int index, uint32_t center_freq, uint32_t sample_rate,
-             const char *output_filename)
+             int gain, const char *output_filename)
 {
     memset(sdr, 0, sizeof(SDR));
 
@@ -31,8 +31,12 @@ int sdr_open(SDR *sdr, int index, uint32_t center_freq, uint32_t sample_rate,
 
     rtlsdr_set_center_freq(sdr->dev, center_freq);
     rtlsdr_set_sample_rate(sdr->dev, sample_rate);
-    rtlsdr_set_tuner_gain_mode(sdr->dev, 1);  /* 1 = manual gain */
-    rtlsdr_set_tuner_gain(sdr->dev, 496);     /* 49.6 dB — adjust as needed */
+    if (gain == 0) {
+        rtlsdr_set_tuner_gain_mode(sdr->dev, 0);  /* AGC */
+    } else {
+        rtlsdr_set_tuner_gain_mode(sdr->dev, 1);  /* manual */
+        rtlsdr_set_tuner_gain(sdr->dev, gain);
+    }
     rtlsdr_reset_buffer(sdr->dev);
 
     /* Allocate 50 MB stream buffer */
