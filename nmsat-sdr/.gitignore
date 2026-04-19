@@ -1,0 +1,19 @@
+# Build
+build/
+cmake-build-*/
+
+# Capture output
+*.bin
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Mac
+.DS_Store
