@@ -73,4 +73,5 @@ ax.set_xlabel("Time (s)")
 ax.set_title("Spectrogram — sdr0 real component")
 
 plt.tight_layout()
-plt.show()
+plt.savefig("peek_plot.png", dpi=150, bbox_inches="tight")
+print("Saved peek_plot.png")
