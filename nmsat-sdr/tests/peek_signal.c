@@ -73,13 +73,13 @@ int peek_signal(void)
     }
 
     BLADE blade;
-    if (blade_open(&blade, 0, 914800000, 2048000, 1500000, 30) < 0) {
+    if (blade_open(&blade, 0, 914800000, 2048000, 1500000, 0) < 0) {
         sdr_close(&sdr0);
         sdr_close(&sdr1);
         return 1;
     }
 
-    if (create_test_tone(&blade, 10000.0f, 1, 1) < 0) {
+    if (create_test_tone(&blade, 10000.0f, 10, 10) < 0) {
         blade_close(&blade);
         sdr_close(&sdr0);
         sdr_close(&sdr1);
