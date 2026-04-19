@@ -33,3 +33,10 @@ add_executable(nmsat_test
 )
 
 target_link_libraries(nmsat_test PRIVATE nmsat_core)
+
+# ── Peek utility ─────────────────────────────────────────────────────────────
+add_executable(nmsat_peek
+    tests/peek_signal.c
+)
+
+target_link_libraries(nmsat_peek PRIVATE nmsat_core)
