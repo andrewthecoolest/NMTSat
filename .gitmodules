@@ -1,0 +1,3 @@
+[submodule "nmsat-pcb"]
+	path = nmsat-pcb
+	url = https://github.com/bunny/nmsat-pcb
