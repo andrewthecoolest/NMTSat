@@ -1,0 +1,27 @@
+# Mac junk
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Local research folders
+_*/
+
+# Python 
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Secrets
+*.key
+*.pem
+.env*
