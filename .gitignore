@@ -25,3 +25,10 @@ __pycache__/
 *.key
 *.pem
 .env*
+
+# Docker
+.dockerenv
+docker-compose.override.yml
+.docker/
+Dockerfile
+init.sh
