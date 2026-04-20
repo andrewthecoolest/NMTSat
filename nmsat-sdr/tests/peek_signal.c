@@ -79,7 +79,7 @@ int peek_signal(void)
         return 1;
     }
 
-    if (create_test_tone(&blade, 10000.0f, 10, 100) < 0) {
+    if (create_test_tone(&blade, 10000.0f, 10, 1000) < 0) {
         blade_close(&blade);
         sdr_close(&sdr0);
         sdr_close(&sdr1);
