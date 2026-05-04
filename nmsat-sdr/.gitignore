@@ -2,8 +2,15 @@
 build/
 cmake-build-*/
 
-# Capture output
+# Run scripts (local convenience wrappers)
+run_*.sh
+
+# Capture output — binary dumps and plots
 *.bin
+*.png
+
+# Longevity run data
+longevity_runs/
 
 # Python
 __pycache__/

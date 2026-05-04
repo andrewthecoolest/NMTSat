@@ -136,11 +136,9 @@ static void *stream_thread(void *ctx)
     struct sched_param sp = { .sched_priority = sched_get_priority_max(SCHED_FIFO) };
     pthread_setschedparam(pthread_self(), SCHED_FIFO, &sp);
 
-    /*
-    buf_num = 8, 8 USB transfer buffers in flight
-    buf_len = 16384, 16KB per callback (must be a multiple of 512)
-    */
-    rtlsdr_read_async(sdr->dev, stream_callback, sdr, 8, 2048);
+    /* buf_num = 32: more buffers in flight reduces USB drops under scheduling jitter
+       buf_len = 2048: 2KB per callback (must be a multiple of 512) */
+    rtlsdr_read_async(sdr->dev, stream_callback, sdr, 32, 2048);
     return NULL;
 }
 
@@ -151,9 +149,11 @@ int sdr_stream_start(SDR *sdr)
         return -1;
     }
     LOG_INFO(TAG_RTL " Starting async stream on device %d\n", sdr->index);
+    free(sdr->buf);
+    sdr->buf = NULL;
     pthread_t *t = (pthread_t *)malloc(sizeof(pthread_t));
     if (!t) return -1;
-    /* store thread handle in buf (repurposed — not used during streaming) */
+    /* store thread handle in buf — freed by sdr_stream_stop */
     sdr->buf = (uint8_t *)t;
     pthread_create(t, NULL, stream_thread, sdr);
     return 0;

@@ -48,6 +48,13 @@ int blade_open(BLADE *blade, int index, uint64_t center_freq,
     bladerf_set_bandwidth(blade->dev, BLADERF_CHANNEL_TX(0), bandwidth, NULL);
     bladerf_set_gain(blade->dev, BLADERF_CHANNEL_TX(0), gain);
 
+    const struct bladerf_range *gain_range = NULL;
+    if (bladerf_get_gain_range(blade->dev, BLADERF_CHANNEL_TX(0), &gain_range) == 0 && gain_range)
+        LOG_INFO(TAG_BLADE " TX gain range: [%.2f, %.2f] dB (step %.4f)\n",
+                 gain_range->min  * gain_range->scale,
+                 gain_range->max  * gain_range->scale,
+                 gain_range->step * gain_range->scale);
+
     LOG_INFO(TAG_BLADE " Configuring TX sync interface... ");
     ret = bladerf_sync_config(blade->dev,
                               BLADERF_TX_X1,
@@ -88,8 +95,8 @@ int create_test_tone(BLADE *blade, float tone_hz, uint32_t on_ms, uint32_t off_m
 {
     if (!blade) return -1;
 
-    uint32_t on_samples  = (uint32_t)((on_ms  / 10000.0f) * blade->sample_rate);
-    uint32_t off_samples = (uint32_t)((off_ms / 10000.0f) * blade->sample_rate);
+    uint32_t on_samples  = (uint32_t)((on_ms  / 1000.0f) * blade->sample_rate);
+    uint32_t off_samples = (uint32_t)((off_ms / 1000.0f) * blade->sample_rate);
     uint32_t total       = on_samples + off_samples;
 
     /* 2 int16_t per I/Q pair */

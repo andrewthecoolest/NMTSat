@@ -27,16 +27,16 @@ target_link_libraries(nmsat_core PUBLIC
     Threads::Threads
 )
 
-# ── Test executable (tests/) ────────────────────────────────────────────────
-add_executable(nmsat_test
-    tests/main.c
+# ── Sync test ────────────────────────────────────────────────────────────────
+add_executable(nmsat_sync
+    tests/sync_test.c
 )
 
-target_link_libraries(nmsat_test PRIVATE nmsat_core)
+target_link_libraries(nmsat_sync PRIVATE nmsat_core)
 
-# ── Peek utility ─────────────────────────────────────────────────────────────
-add_executable(nmsat_peek
-    tests/peek_signal.c
+# ── Longevity monitor ────────────────────────────────────────────────────────
+add_executable(nmsat_longevity
+    tests/longevity.c
 )
 
-target_link_libraries(nmsat_peek PRIVATE nmsat_core)
+target_link_libraries(nmsat_longevity PRIVATE nmsat_core)
