@@ -319,7 +319,7 @@ static void on_desync(const window_t *w, const char *suggested_filename)
     mkdir(subdir, 0755);
 
     /* Magnitude window context */
-    char path[512];
+    char path[sizeof(subdir) + 32];
     snprintf(path, sizeof(path), "%s/window.bin", subdir);
     window_dump(w, path);
 
@@ -514,11 +514,17 @@ static void *debug_thread(void *arg)
 {
     (void)arg;
     char line[64];
+    int stdin_open = 1;
 
     while (!g_quit) {
         if (g_sigusr1) {
             g_sigusr1 = 0;
             inject_desync();
+        }
+
+        if (!stdin_open) {
+            nanosleep(&(struct timespec){0, 100000000}, NULL);
+            continue;
         }
 
         struct timeval tv = { .tv_sec = 0, .tv_usec = 100000 };
@@ -539,6 +545,8 @@ static void *debug_thread(void *arg)
                 } else {
                     LOG_INFO("[longevity] Commands: desync | snapshot | quit\n");
                 }
+            } else {
+                stdin_open = 0;
             }
         }
     }

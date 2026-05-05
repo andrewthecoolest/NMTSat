@@ -27,6 +27,7 @@ WINDOW_SIZE      = 65536
 SNAPSHOT_SAMPLES = 4096        # must match SNAPSHOT_LOOK_BACK in longevity.c
 SAMPLE_RATE      = 2_048_000
 EVENT_CENTER     = WINDOW_SIZE // 2
+DESYNC_CONTEXT   = 8000        # samples to show around event (≈ 2 tone pulses)
 DIFF_AVG_LEN     = 32
 MIN_THRESH       = 10
 
@@ -245,8 +246,14 @@ def plot_desync(run_dir, desync_name):
     n_sdrs, mags, diffs = load_samples(window_path, WINDOW_SIZE)
     n_pairs = n_sdrs - 1
 
-    t_ms     = np.arange(WINDOW_SIZE) / SAMPLE_RATE * 1000.0
-    event_ms = t_ms[EVENT_CENTER]
+    half    = DESYNC_CONTEXT // 2
+    lo      = max(0, EVENT_CENTER - half)
+    hi      = min(WINDOW_SIZE, EVENT_CENTER + half)
+    mags    = mags[lo:hi]
+    diffs   = diffs[lo:hi]
+
+    t_ms     = np.arange(lo, hi) / SAMPLE_RATE * 1000.0
+    event_ms = EVENT_CENTER / SAMPLE_RATE * 1000.0
 
     ts     = meta.get("timestamp",       "?")
     uptime = meta.get("uptime_s",        "?")
