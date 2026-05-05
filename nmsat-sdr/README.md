@@ -23,12 +23,6 @@ cmake --build build -j$(nproc)
 python3 tests/view_desync.py
 ```
 
-Docker environment with all dependencies pre-installed:
-
-```bash
-./init.sh
-```
-
 ---
 
 ## Library — `nmsat_core`
