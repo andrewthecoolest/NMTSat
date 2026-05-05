@@ -19,12 +19,6 @@ detects when receivers fall out of sync.
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 
-# One-shot characterization test (builds + runs + plots)
-./run_sync.sh
-
-# Long-running coherence monitor
-./run_longevity.sh
-
 # Interactive desync event viewer
 python3 tests/view_desync.py
 ```
