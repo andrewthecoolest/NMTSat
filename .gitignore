@@ -17,6 +17,7 @@ __pycache__/
 .idea/
 *.swp
 *.swo
+CLAUDE.md
 
 # Logs
 *.log
@@ -32,3 +33,4 @@ docker-compose.override.yml
 .docker/
 Dockerfile
 init.sh
+start_longevity.sh
