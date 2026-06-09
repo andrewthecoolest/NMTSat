@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(nmsat-sdr C)
+project(nmtsat-sdr C)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -12,15 +12,15 @@ find_library(BLADERF_LIB bladeRF REQUIRED)
 find_library(MATH_LIB    m      REQUIRED)
 
 # ── Core library (src/) ─────────────────────────────────────────────────────
-add_library(nmsat_core STATIC
+add_library(nmtsat_core STATIC
     src/sdr.c
     src/blade.c
     src/process.c
 )
 
-target_include_directories(nmsat_core PUBLIC src)
+target_include_directories(nmtsat_core PUBLIC src)
 
-target_link_libraries(nmsat_core PUBLIC
+target_link_libraries(nmtsat_core PUBLIC
     ${RTLSDR_LIB}
     ${BLADERF_LIB}
     ${MATH_LIB}
@@ -28,15 +28,15 @@ target_link_libraries(nmsat_core PUBLIC
 )
 
 # ── Sync test ────────────────────────────────────────────────────────────────
-add_executable(nmsat_sync
+add_executable(nmtsat_sync
     tests/sync_test.c
 )
 
-target_link_libraries(nmsat_sync PRIVATE nmsat_core)
+target_link_libraries(nmtsat_sync PRIVATE nmtsat_core)
 
 # ── Longevity monitor ────────────────────────────────────────────────────────
-add_executable(nmsat_longevity
+add_executable(nmtsat_longevity
     tests/longevity.c
 )
 
-target_link_libraries(nmsat_longevity PRIVATE nmsat_core)
+target_link_libraries(nmtsat_longevity PRIVATE nmtsat_core)

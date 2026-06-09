@@ -1,4 +1,4 @@
-# nmsat-sdr
+# nmtsat-sdr
 
 Real-time RF coherence monitor. RTL-SDR receivers capture the same signal
 simultaneously while a BladeRF transmits a known test tone. A processing thread
@@ -7,10 +7,9 @@ detects when receivers fall out of sync.
 ## Requirements
 
 - 2+ RTL-SDR devices
-- 1 BladeRF (TX only)
-- Linux (`SCHED_FIFO` requires root or `CAP_SYS_NICE`)
+- 1 BladeRF
 - Libraries: `librtlsdr`, `libbladeRF`, `libusb-1.0`, `pthreads`, `libm`
-- Python 3 + `numpy` + `matplotlib` (visualization only)
+- Python 3 + `numpy` + `matplotlib`
 
 ## Build & run
 
@@ -25,7 +24,7 @@ python3 tests/view_desync.py
 
 ---
 
-## Library — `nmsat_core`
+## Library — `nmtsat_core`
 
 ### `src/sdr.h` — RTL-SDR device management
 
@@ -155,7 +154,7 @@ dump), then calls `on_window_event`, sets `exit_reason`, and exits via
 
 ## Executables
 
-### `nmsat_sync` — one-shot characterization test
+### `nmtsat_sync` — one-shot characterization test
 
 Runs a four-phase pipeline then exits:
 
@@ -168,7 +167,7 @@ Runs a four-phase pipeline then exits:
 
 `tests/visualize_sync.py` plots all four stages as `sync_plot.png`.
 
-### `nmsat_longevity` — long-running coherence monitor
+### `nmtsat_longevity` — long-running coherence monitor
 
 Runs the same three-phase startup (align → gain → re-align), then monitors
 indefinitely. On each desync the process:

@@ -31,6 +31,4 @@ CLAUDE.md
 .dockerenv
 docker-compose.override.yml
 .docker/
-Dockerfile
-init.sh
 start_longevity.sh
