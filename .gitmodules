@@ -1,3 +1,6 @@
 [submodule "nmsat-pcb"]
 	path = nmsat-pcb
 	url = https://github.com/andrewthecoolest/nmsat-pcb 
+[submodule "nmtsat-fsw"]
+	path = nmtsat-fsw
+	url = git@github.com:andrewthecoolest/NMTSat-FSW.git
