@@ -5,6 +5,10 @@ cmake-build-*/
 # Run scripts (local convenience wrappers)
 run_*.sh
 
+# Local environment setup
+Dockerfile
+init.sh
+
 # Capture output — binary dumps and plots
 *.bin
 *.png

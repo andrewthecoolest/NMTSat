@@ -11,6 +11,33 @@ detects when receivers fall out of sync.
 - Libraries: `librtlsdr`, `libbladeRF`, `libusb-1.0`, `pthreads`, `libm`
 - Python 3 + `numpy` + `matplotlib`
 
+## Installing dependencies
+
+Two options:
+
+### Docker
+
+```bash
+./init.sh   # builds the image and drops you into a privileged container
+```
+
+### Local (no Docker)
+
+On Debian/Ubuntu, run the bootstrap script:
+
+```bash
+./setup.sh                 # distro packages (fast, includes udev rules)
+./setup.sh --from-source   # build librtlsdr + bladeRF from upstream git
+```
+
+Use `--from-source` if your distro's `librtlsdr`/`bladeRF` packages are too old.
+On other distros, install the equivalents of: `build-essential cmake pkg-config
+git libusb-1.0 libfftw3 libcurl libncurses librtlsdr-dev libbladerf-dev` plus
+`python3`, `numpy`, and `matplotlib`.
+
+After install, USB devices need udev rules and group membership (`plugdev` /
+`dialout`); unplug and replug the SDRs so the new rules take effect.
+
 ## Build & run
 
 ```bash
