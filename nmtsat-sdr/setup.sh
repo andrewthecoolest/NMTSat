@@ -24,7 +24,7 @@ sudo apt-get install -y \
   libfftw3-dev \
   libcurl4-openssl-dev \
   libncurses-dev \
-  python3 python3-pip python3-dev \
+  python3 python3-numpy python3-matplotlib \
   usbutils \
   curl ca-certificates
 
@@ -47,9 +47,6 @@ else
   sudo ldconfig
   rm -rf "$tmp"
 fi
-
-echo ">> Installing Python deps..."
-pip3 install --user --no-cache-dir numpy matplotlib
 
 echo ""
 echo ">> Done. Build with:"
