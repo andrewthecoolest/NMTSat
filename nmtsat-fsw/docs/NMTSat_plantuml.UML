@@ -1,0 +1,67 @@
+@startuml
+skinparam componentStyle rectangle
+
+component "OBC" as OBC #LightGray
+
+package "Power" {
+  component "EPS" as EPS
+}
+
+package "Payload" {
+  component "VLF receiver" as VLF
+  component "Search coil magnetometer" as SCM
+  component "Beacon transmitter" as BCN
+  component "Optics (TBD)" as OPT
+}
+
+package "Radio" {
+  component "X/UHF radio" as XUHF
+}
+
+package "ADCS" {
+  component "Navigation magnetometer" as MAG
+  component "Star tracker" as STAR
+  component "Sun sensor" as SUN
+  component "Gyroscope" as GYRO
+  component "Magnetorquer" as TORQ
+  component "Reaction wheel" as RW
+}
+
+package "Navigation" {
+  component "GPS receiver" as GPS
+}
+
+package "General sensors" {
+  component "Thermal" as THERM
+  component "Others (TBD)" as OTHR
+}
+
+package "Controls" {
+  component "VLF antenna deploy" as VDEP
+  component "VHF beacon antenna deploy (TBD)" as BDEP
+  component "UHF antenna deploy (TBD)" as UDEP
+  component "Solar panel deploy" as SDEP
+  component "Search coil boom deploy (TBD)" as SCBDEP
+}
+
+OBC -- EPS
+OBC -- VLF
+OBC -- SCM
+OBC -- BCN
+OBC -- OPT
+OBC -- XUHF
+OBC -- MAG
+OBC -- STAR
+OBC -- SUN
+OBC -- GYRO
+OBC -- TORQ
+OBC -- RW
+OBC -- GPS
+OBC -- THERM
+OBC -- OTHR
+OBC -- VDEP
+OBC -- BDEP
+OBC -- UDEP
+OBC -- SDEP
+OBC -- SCBDEP
+@enduml
