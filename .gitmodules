@@ -1,3 +1,6 @@
 [submodule "nmtsat-fsw"]
 	path = nmtsat-fsw
 	url = git@github.com:andrewthecoolest/NMTSat-FSW.git
+[submodule "NMTSat-SE-tool"]
+	path = NMTSat-SE-tool
+	url = git@github.com:andrewthecoolest/NMTSat-SE-tool.git
